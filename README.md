@@ -3,21 +3,28 @@ Forge tag jumps so tag alternatives can populate the tagstack.
 
 # About
 
-Do you have a LSP or other magic that helps you jump to tags? Are you
-frustrated that `C-t` doesn't work with that magic? tagimposter is here to
-commit forgery!
+Do you have a
+[LSP](https://github.com/search?l=Vim+script&q=lsp&type=Repositories) or other
+magic that helps you jump to symbols? Are you frustrated that `C-t` doesn't
+work with that magic? tagimposter will commit tag forgery for you!
 
 Inspired by [jedi.vim's
 g:jedi#use_tag_stack](https://github.com/davidhalter/jedi-vim/blob/4c430ed536b6484f7c63929a4426d64f981d994e/pythonx/jedi_vim.py#L319),
-tagimposter pushes imposter tags onto the tagstack for you. With a little
-configuration, tagimposter with make your tag jumper magic populate the
-tagstack.
+tagimposter pushes imposter tags onto the tagstack. Call
+`:TagImposterAnticipateJump` before your tag jumper, and you'll have full
+native support (including `C-t`) without any key remapping.
 
 # Usage
 
-In an ftplugin:
+Usage varies for each tag jumper and how you like to jump to tags. For example
+with [omnisharp-vim](https://github.com/OmniSharp/omnisharp-vim), **in
+`ftplugin/cs.vim`**:
 
     nnoremap <buffer> <Leader>jT :<C-u> TagImposterAnticipateJump <Bar> OmniSharpGotoDefinition<CR>
+
+Now you can use `<Leader>jT` to jump to tags, `<C-t>` to jump back, and
+`:pop`/`:tag` to navigate up and down the stack. `:tags` will show your tags
+prefixed with `IMPOSTER_`.
 
 # Differences from jedi
 
