@@ -8,7 +8,7 @@
 " symbol names.
 "
 " Usage:
-"   nnoremap <buffer> <Leader>jT :<C-u> :OmniSharpGotoDefinition <Bar> RecordTagJump<CR>
+"   nnoremap <buffer> <Leader>jT :<C-u> RecordTagJump <Bar> OmniSharpGotoDefinition<CR>
 
 if exists('loaded_tagimposter')
     finish
@@ -19,4 +19,4 @@ let g:tagimposter_tagfile = get(g:, 'tagimposter_tagfile', '~/.vim-cache/imposte
 let g:tagimposter_symbolprefix = get(g:, 'tagimposter_symbolprefix', 'IMPOSTER_')
 
 
-command! RecordTagJump silent call tagimposter#pushtag(expand("<cword>"))
+command! -bar RecordTagJump silent call tagimposter#pushtag(expand("<cword>"))

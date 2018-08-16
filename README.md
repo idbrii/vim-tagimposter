@@ -13,9 +13,11 @@ tagimposter pushes imposter tags onto the tagstack for you. With a little
 configuration, tagimposter with make your tag jumper magic populate the
 tagstack.
 
-Usage:
+# Usage
 
-    nnoremap <buffer> <Leader>jT :<C-u> :OmniSharpGotoDefinition <Bar> RecordTagJump<CR>
+In an ftplugin:
+
+    nnoremap <buffer> <Leader>jT :<C-u> RecordTagJump <Bar> OmniSharpGotoDefinition<CR>
 
 # Differences from jedi
 
