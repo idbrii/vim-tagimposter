@@ -22,19 +22,21 @@ function! tagimposter#setup()
 endf
 
 function! tagimposter#pushtag(symbol)
-    let lazyredraw_bak = &lazyredraw
-    let &lazyredraw = 1
+    let win = winsaveview()
     
     call tagimposter#setup()
+    let tagfile = fnamemodify(g:tagimposter_tagfile, ':p')
+
     let symbol = g:tagimposter_symbolprefix . a:symbol
     " Tags are a symbol, a file, and a search expression.
     let tag_str = printf("%s\t%s\t/^%s$/;", symbol, expand("%:p"), getline('.'))
-    exec "keepalt split +edit ". g:tagimposter_tagfile
-    .,$delete _
-    put! =tag_str
-    write
-    close
-    exec 'tjump '. symbol
+    let success = writefile([tag_str], tagfile, "S")
+    if success >= 0
+        exec 'tjump '. symbol
+    else
+        echoerr 'Failed to write to '. tagfile
+    endif
     
-    let &lazyredraw = lazyredraw_bak
+    " tjump moves the cursor to first nonblank, so we must move back.
+    call winrestview(win)
 endf
