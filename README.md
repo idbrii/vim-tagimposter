@@ -17,7 +17,7 @@ tagstack.
 
 In an ftplugin:
 
-    nnoremap <buffer> <Leader>jT :<C-u> RecordTagJump <Bar> OmniSharpGotoDefinition<CR>
+    nnoremap <buffer> <Leader>jT :<C-u> TagImposterAnticipateJump <Bar> OmniSharpGotoDefinition<CR>
 
 # Differences from jedi
 
