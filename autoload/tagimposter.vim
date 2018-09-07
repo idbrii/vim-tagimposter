@@ -13,7 +13,7 @@ function! tagimposter#setup()
     endif 
     let g:tagimposter_has_hookedup_tagfile = 1
 
-    let tagfolder = fnamemodify(g:tagimposter_tagfile, ":h")
+    let tagfolder = expand(fnamemodify(g:tagimposter_tagfile, ":h"))
     if filewritable(tagfolder) == 0 && exists("*mkdir")
         call mkdir(tagfolder, "p", 0700)
     endif
@@ -25,7 +25,7 @@ function! tagimposter#pushtag(symbol)
     let win = winsaveview()
     
     call tagimposter#setup()
-    let tagfile = fnamemodify(g:tagimposter_tagfile, ':p')
+    let tagfile = expand(fnamemodify(g:tagimposter_tagfile, ':p'))
 
     let symbol = g:tagimposter_symbolprefix . a:symbol
     " Tags are a symbol, a file, and a search expression.
