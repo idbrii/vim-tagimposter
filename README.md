@@ -1,6 +1,14 @@
 # vim-tagimposter
 Forge tag jumps so tag alternatives can populate the tagstack.
 
+# Obsolete
+
+Recent versions of vim have `gettagstack` and `settagstack` that are better
+versions of the functionality provided by tagimposter. See [vim/vim#3604](https://github.com/vim/vim/pull/3604).
+
+For an example implementation, see 
+[this commit in vim-racer](https://github.com/racer-rust/vim-racer/commit/6fe615ecedce06df9ec2624dd8f2ae0b3b69c4f5).
+
 # About
 
 Do you have a
